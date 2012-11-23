@@ -36,8 +36,9 @@ function resizeImage(image) {
 function showFullPhoto(url) {
     // Show the overlay.
     var overlay = $('.overlay');
-    overlay.innerHTML = '';
-    var img = overlay.appendChild(document.createElement('img'));
+    var img = overlay.querySelector('img');
+    if (!img)
+      img = overlay.appendChild(document.createElement('img'));
     img.src = url;
     overlay.hidden = false;
     setTimeout(function() { overlay.classList.remove('hidden'); });
