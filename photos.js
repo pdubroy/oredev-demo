@@ -59,16 +59,18 @@ function update() {
     var addedCount = 0;
     
     var scrollTop = $('body').scrollTop;
+    var listHeight = photoList.clientHeight;
 
     while (true) {
         var viewportBottom = scrollTop + window.innerHeight;
 
-        var loadingBoundary = photoList.clientHeight + 100;
+        var loadingBoundary = listHeight + 100;
 
         if (photoList.lastChild && viewportBottom < loadingBoundary)
             break;
         addPhoto(photoList, true);
         ++addedCount;
+        listHeight += PHOTO_HEIGHT;
     }
 
     // Stop the animation of any photos that have gone off-screen.
