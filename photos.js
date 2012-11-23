@@ -13,7 +13,7 @@ var $$ = function(sel) {
 }
 
 function addPhoto(parentEl, animate) {
-    var imageUrl = 'photos/scotland' + (photoCount + 1) + '.jpg';
+    var imageUrl = 'photos/scotland' + (photoCount + 1) + '-small.jpg';
 
     photoCount = ++photoCount % TOTAL_PHOTO_COUNT;
 
