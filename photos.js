@@ -37,28 +37,28 @@ function showFullPhoto(url) {
     // Show the overlay.
     var overlay = $('.overlay');
     var img = overlay.querySelector('img');
-    if (!img)
+    if (!img) {
       img = overlay.appendChild(document.createElement('img'));
+      window.addEventListener('resize', function(e) {
+        resizeImage(img);
+      });
+    }
     img.src = url;
     overlay.hidden = false;
     setTimeout(function() { overlay.classList.remove('hidden'); });
-
-    window.addEventListener('resize', function(e) {
-        resizeImage(img);
-    });
 }
 
 function stopAnimation(node) {
     // Remove and re-add the node to stop the animation.
     var parent = node.parentNode;
     var sibling = node.nextSibling;
-    parent.insertBefore(parent.removeChild(node), sibling);   
+    parent.insertBefore(parent.removeChild(node), sibling);
 }
 
 function update() {
     var photoList = $('.photoList');
     var addedCount = 0;
-    
+
     var scrollTop = $('body').scrollTop;
     var listHeight = photoList.clientHeight;
 
